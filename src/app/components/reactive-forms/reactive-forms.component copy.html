@@ -1,0 +1,171 @@
+<div class="bg-primary" style="min-height: 100vh">
+  <div class="container w-50">
+    <div class="card">
+      <div class="card-body">
+        <form
+          [formGroup]="userFormGroup"
+          (ngSubmit)="onSubmit()"
+          class="row gy-3"
+        >
+          <div class="col">
+            <!-- INPUT firstName -->
+            <input
+              [ngClass]="applyValidationStyleClass('firstName')"
+              formControlName="firstName"
+              type="text"
+              class="form-control"
+              placeholder="Nombre y Apellido"
+              aria-label="First name"
+            />
+            <small class="invalid-feedback">
+              {{  getErrors('firstName')?.['required'] && 'Este campo es requerido'}}
+              {{  getErrors('firstName')?.['noHomeroError'] && 'No admiten homeros'}}
+            </small>
+            <!-- <pre>{{ getErrors("firstName") | json }}</pre> -->
+          </div>
+          <div class="col">
+            <input
+              [ngClass]="applyValidationStyleClass('lastName')"
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              placeholder="Last name"
+              aria-label="Last name"
+            />
+          </div>
+          <!-- EMAIL INPUT -->
+          <div class="col-12">
+            <input
+              [ngClass]="applyValidationStyleClass('email')"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="Email"
+            />
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input
+                formControlName="acceptTerms"
+                class="form-check-input"
+                type="checkbox"
+                id="gridCheck"
+              />
+              <label class="form-check-label" for="gridCheck">
+                Aceptar Termminos y Condiciones
+              </label>
+            </div>
+          </div>
+
+
+          <!--Nuevos Campos-->
+          <!--Telefono-->
+
+        
+          
+          
+          <!--Localidad-->
+          <!--Numero-->
+          <!--Departamento-->
+          <!--Piso-->
+          <!--Comentarios-->
+
+          <!--Compartir tu ubicacion-->
+          <div class="col-12">
+            <div class="form-check">
+              <input
+                formControlName="acceptTerms"
+                class="form-check-input"
+                type="checkbox"
+                id="gridCheck"
+              />
+              <label class="form-check-label" for="gridCheck">
+                Deseas Compartir tu Ubicación
+              </label>
+            </div>
+          </div>
+
+          <!--Fin nuevos campos-->
+
+          <!-- SECCION DE LOCACION DEL USUARIO -->
+
+          <div class="py-3">
+            <hr />
+          </div>
+
+          <ng-container formGroupName="location">
+            <div class="col-12">
+              <!-- INPUT DE ADDRESS -->
+              <label for="inputAddress" class="form-label">Calle</label>
+              <input
+                formControlName="address"
+                type="text"
+                class="form-control"
+                id="inputAddress"
+                placeholder="1234 Main St"
+              />
+            </div>
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label">EntreCalles</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress2"
+                placeholder="Entre Calles, Departamento,  "
+              />
+            </div>
+            <!-- INPUT DE CIUDAD -->
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">Ciudad</label>
+              <input
+                formControlName="city"
+                type="text"
+                class="form-control"
+                id="inputCity"
+                placeholder="ej: CABA"
+              />
+            </div>
+            <!-- INPUT DE ESTADO/PROVINCIA -->
+            <div class="col-md-4">
+              <label for="inputState" class="form-label">Provincia</label>
+              <select
+                formControlName="state"
+                id="inputState"
+                class="form-select"
+              >
+                <option selected>Seleccionar</option>
+                <!-- ANGULAR 17 > -->
+                <!-- @for (provincia of provincias; track $index) {
+                <option>{{ provincia }}</option>
+                } -->
+
+                <!-- ANGULAR 16 < -->
+                <option
+                  [value]="provincia.id"
+                  *ngFor="let provincia of provincias"
+                >
+                  {{ provincia.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-2">
+              <label for="inputZip" class="form-label">Cod.Postal</label>
+              <input type="text" class="form-control" id="inputZip" />
+            </div>
+          </ng-container>
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+          </div>
+
+          <div class="py-3">
+            <hr />
+          </div>
+          <pre>{{ userFormGroup.value | json }}</pre>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

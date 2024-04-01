@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'ReactiveForms';
+  title = '50260-clase-06-formularios';
 }

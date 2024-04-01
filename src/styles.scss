@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #d8344c;
+    --bs-btn-border-color: #d8344c;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #d8344c;
+    --bs-btn-hover-border-color: #d8344c;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #d8344c;
+    --bs-btn-active-border-color: #d8344c;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #d8344c;
+    --bs-btn-disabled-border-color: #d8344c;
+    background-color:#d8344c;
+    color: white;
+    border-color:#d8344c ;
+
+}

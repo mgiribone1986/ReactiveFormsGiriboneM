@@ -1,0 +1,199 @@
+<div class="Fondo"style="min-height: 100vh">
+  <div class="container w-50">
+    <div class="card">
+      <div class="card-body">
+        <form
+          [formGroup]="userFormGroup"
+          (ngSubmit)="onSubmit()"
+          class="row gy-3"
+        > <h5 class="text-danger">Datos Personales</h5>
+          <div class="col-6">
+            <input
+              [ngClass]="applyValidationStyleClass('nombreApellido')"
+              formControlName="nombreApellido"
+              type="text"
+              class="form-control"
+              placeholder="Nombre y Apellido"
+              aria-label="First name"
+            />
+            <small class="invalid-feedback">
+              {{  getErrors('nombreApellido')?.['required'] && 'Este campo es requerido'}}
+              {{  getErrors('nombreApellido')?.['noHomeroError'] && 'No admiten homeros'}}
+            </small>
+            <!-- <pre>{{ getErrors("firstName") | json }}</pre> -->
+          </div>
+          <div class="col-6">
+            <input
+              [ngClass]="applyValidationStyleClass('phoneNumber')"
+              formControlName="phoneNumber"
+              type="text"
+              class="form-control"
+              placeholder="Número de teléfono"
+              aria-label="phoneNumber"
+            />
+            <small class="invalid-feedback">
+              {{getErrors('phoneNumber')?.['required'] && 'Este campo es requerido'}}
+              {{getErrors('phoneNumber')?.['NoPhoneNumberError'] && 'Debe de ingresar un formato valido'}}
+            </small>
+          </div>
+          <!-- EMAIL INPUT -->
+          <div class="col-12">
+            <input
+              [ngClass]="applyValidationStyleClass('email')"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="Email"
+            />
+            <small class="invalid-feedback">
+              {{getErrors('email')?.['required'] && 'Este campo es requerido'}}
+              {{getErrors('email')?.['email'] && 'Error en el formato'}}
+            </small>
+          </div>
+          <div class="col-20 comentarios">
+            <input
+                [ngClass]="applyValidationStyleClass('comentarios')"
+                formControlName="comentarios"
+                type="text"
+                class="form-control"
+                placeholder="Que productos deseas, que te inspiro a comprar, etc"
+                aria-label="comentarios">
+              <small class="invalid-feedback">
+                {{  getErrors('comentarios')?.['required'] && 'Debe de ingresar un formato valido'}}
+              </small>
+          </div>
+          <!-- SECCION DE LOCACION DEL USUARIO -->
+          <div class="py-3">
+            <hr />
+          </div>
+          <!--DIRECCIONES!!!-->
+          <ng-container formGroupName="location">
+            <h5 class="text-danger">Dirección</h5>
+            <div class="col-12">
+              <label for="calle" class="form-label"></label>
+              <input
+                formControlName="calle"
+                type="text"
+                class="form-control"
+                id="calle"
+                placeholder="Calle"
+              />
+            </div>
+            <div class="col-12">
+              <label for="EntreCalle" class="form-label"></label>
+              <input
+                formControlName="entreCalle"
+                type="text"
+                class="form-control"
+                id="entreCalle'"
+                placeholder="entreCalle"
+              />
+              <small class="invalid-feedback">
+                {{getErrors('entreCalle')?.['required'] && 'Este campo es requerido'}}
+              </small>  
+            </div>
+            <div class="col-3">
+              <input
+                [ngClass]="applyValidationStyleClass('numero')"
+                formControlName="numero"
+                type="text"
+                class="form-control"
+                placeholder="Número"
+                aria-label="numero"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                [ngClass]="applyValidationStyleClass('piso')"
+                formControlName="piso"
+                type="text"
+                class="form-control"
+                placeholder="Piso"
+                aria-label="piso"
+              />
+            </div>
+          <div class="col-3">
+            <input
+              [ngClass]="applyValidationStyleClass('dpto')"
+              formControlName="dpto"
+              type="text"
+              class="form-control"
+              placeholder="Dpto"
+              aria-label="dpto"
+            />
+          </div>
+
+          <div class="col-3">
+            <input
+              [ngClass]="applyValidationStyleClass('codPostal')"
+              formControlName="codPostal"
+              type="text"
+              class="form-control"
+              placeholder="CodPostal"
+              aria-label="codPostal"
+            />
+          </div>
+            <!-- INPUT DE CIUDAD -->
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label text-danger">Localidad</label>
+              <input
+                formControlName="localidad"
+                type="text"
+                class="form-control"
+                id="inputCity"
+                placeholder="CABA"
+              />
+            </div>
+            <!-- INPUT DE ESTADO/PROVINCIA -->
+            <div class="col-md-6">
+              <label for="inputState" class="form-label text-danger">Provincia</label>
+              <select
+                formControlName="state"
+                id="inputState"
+                class="form-select"
+              >
+                <option selected>Seleccionar</option>
+                <!-- ANGULAR 17 > -->
+                <!-- @for (provincia of provincias; track $index) {
+                <option>{{ provincia }}</option>
+                } -->
+
+                <!-- ANGULAR 16 < -->
+                <option
+                  [value]="provincia.id"
+                  *ngFor="let provincia of provincias"
+                >
+                  {{ provincia.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  formControlName="acceptTerms"
+                  class="form-check-input"
+                  type="checkbox"
+                  id="gridCheck"
+                />
+                <label class="form-check-label" for="gridCheck">
+                  Aceptar Termminos y Condiciones
+                </label>
+                <p>Ser feliz nada mas que ser feliz</p>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="col-12">
+            <button class="btn btn-primary " type="submit">Enviar</button>
+          </div>
+
+          <div class="py-3">
+            <hr />
+          </div>
+          <pre>{{ userFormGroup.value | json }}</pre>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

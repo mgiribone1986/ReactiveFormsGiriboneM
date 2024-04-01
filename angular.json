@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ReactiveForms": {
+    "50260-clase-06-formularios": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/reactive-forms",
+            "outputPath": "dist/50260-clase-06-formularios",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ReactiveForms:build:production"
+              "buildTarget": "50260-clase-06-formularios:build:production"
             },
             "development": {
-              "buildTarget": "ReactiveForms:build:development"
+              "buildTarget": "50260-clase-06-formularios:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ReactiveForms:build"
+            "buildTarget": "50260-clase-06-formularios:build"
           }
         },
         "test": {
@@ -104,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
